@@ -3,15 +3,17 @@
 @tailwind utilities;
 
 :root {
-    --primary-color: #fd5542
+    --main-color: #fd5542
 }
-.primary-bg {
-    /* background: var(--primary-color); */
-    @apply bg-[color:var(--primary-color)]
+.main-bg {
+    /* background: var(--main-color); */
+    @apply bg-[color:var(--main-color)]
 }
-.primary-text {
-    color: var(--primary-color);
+.main-text {
+    /* color: var(--main-color); */
+    @apply text-[color:var(--main-color)]
 }
-.primary-border {
-    border: var(--primary-color);
+.main-border {
+    /* border: var(--main-color); */
+    @apply border-[color:var(--main-color)]
 }
