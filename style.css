@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.root {
+    --primary-color: #fd5542
+}
+.primary-bg {
+    /* background-color: var(--primary-color); */
+    @apply bg-[#fd5542]
+}
+.primary-text {
+    color: var(--primary-color);
+}
+.primary-border {
+    border-color: var(--primary-color);
+}
