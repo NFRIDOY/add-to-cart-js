@@ -4,6 +4,7 @@
 
 :root {
     --main-color: #fd5542
+
 }
 .main-bg {
     /* background: var(--main-color); */
@@ -16,4 +17,13 @@
 .main-border {
     /* border: var(--main-color); */
     @apply border-[color:var(--main-color)]
+}
+.main-btn {
+    @apply main-bg px-4 py-2 rounded-md text-white hover:bg-[#FF0021]
+}
+.secondary-btn {
+    @apply bg-white px-4 py-2 rounded-md text-[color:var(--main-color)] outline outline-[color:var(--main-color)] hover:bg-[color:var(--main-color)] hover:text-white
+}
+.card {
+    @apply bg-zinc-100 w-80 p-2 border-2 rounded-xl
 }
