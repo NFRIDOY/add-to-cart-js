@@ -34,7 +34,7 @@ const foodItems = [
     },
 ];
 
-const cart = [
+let cart = [
     {
         cartId: 1,
         name: "Chicken",
@@ -57,9 +57,28 @@ const cart = [
     },
 ];
 
-const myFunction = () => {
-    alert("Please");
-};
+const cartContainerDiv = document.getElementById("cartContainer");
+cartContainer.style.display = "none";
+
+function cartToggle() {
+    if (cartContainer.style.display === "none") {
+        cartContainer.style.display = "block";
+    } else {
+        cartContainer.style.display = "none";
+    }
+}
+
+// Add Item to Cart
+function addToCart(item) {
+    alert("Add to cart")
+    const existingItem = cart.find(cartItem => cartItem.id === item.id);
+    if (!existingItem) {
+        cart.push({ ...item });
+        updateCart();
+        document.getElementById(`addItem-${item.id}`).disabled = true;
+    }
+    cartContainer.style.display = "block";
+}
 
 //* Daynamic Cards
 const itemCardsDiv = document.getElementById("itemCards");
@@ -85,7 +104,7 @@ foodItems.forEach((item) => {
         <p class="text-sm">${item.description}</p>
       </div>
       <div class="cta flex flex-col gap-y-2 mt-2">
-        <button class="main-btn w-full" onclick="myFunction()">Add to Order</button>
+        <button class="main-btn w-full" onclick="addToCart(${item.id})">Add to Order</button>
         <button class="secondary-btn w-full">Customize</button>
       </div>
     `;
@@ -122,6 +141,3 @@ cart.forEach((item) => {
     cartItemsDiv?.appendChild(cardDiv);
 });
 
-// cart show hidden toggler
-
-const cartContainerDiv = document.getElementById("cartContainer");

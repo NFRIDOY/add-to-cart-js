@@ -39,6 +39,10 @@
     @apply bg-slate-200 text-black px-1 text-center
 }
 
+/* .cartContainer {
+    display: none;
+} */
+
 /* .itemQuantity {
     @apply w-10 bg-white text-black
 } */

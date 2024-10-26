@@ -31,7 +31,7 @@
                 </ul>
             </div>
             <div>
-                <button>Cart</button>
+                <button onclick="cartToggle()" class="secondary-btn">Cart</button>
                 <button class="order main-bg px-4 py-2 rounded-md text-white">Order Now</button>
             </div>
         </nav>
@@ -61,7 +61,7 @@
                     <span class="item">1</span>
                     <span>Item</span>
                 </div>
-                <div class="secondary-btn">Close</div>
+                <div class="secondary-btn" onclick="cartToggle()">Close</div>
             </div>
             <div id="cartItems" class="cartItems p-2">
 
@@ -69,6 +69,7 @@
         </aside>
     </main>
     <script src="index.js"></script>
+     
 </body>
 
 </html>
