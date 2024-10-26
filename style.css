@@ -19,10 +19,10 @@
     @apply border-[color:var(--main-color)]
 }
 .main-btn {
-    @apply main-bg px-4 py-2 rounded-md text-white hover:bg-[#FF0021]
+    @apply main-bg px-4 py-2 rounded-md text-white hover:bg-[#FF0021] cursor-pointer
 }
 .secondary-btn {
-    @apply bg-white px-4 py-2 rounded-md text-[color:var(--main-color)] outline outline-[color:var(--main-color)] hover:bg-[color:var(--main-color)] hover:text-white
+    @apply bg-white px-4 py-2 rounded-md text-[color:var(--main-color)] outline outline-[color:var(--main-color)] hover:bg-[color:var(--main-color)] hover:text-white cursor-pointer
 }
 .card {
     @apply relative bg-zinc-100 w-72 p-2 border-2 rounded-xl
