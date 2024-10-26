@@ -8,6 +8,7 @@ const foodItems = [
         imageUrl:
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHQt0aBwYwHRqgQgUim4MUdKycRYAqHeUmBg&s",
         isNew: true,
+        quantity: 1,
     },
     {
         id: 2,
@@ -18,6 +19,7 @@ const foodItems = [
         imageUrl:
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIpmd8TQd3iaAIho6YWi_FwWP7ZBbfGeLz3w&s",
         isNew: false,
+        quantity: 1,
     },
     {
         id: 3,
@@ -28,18 +30,30 @@ const foodItems = [
         imageUrl:
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHQt0aBwYwHRqgQgUim4MUdKycRYAqHeUmBg&s",
         isNew: true,
+        quantity: 1,
     },
 ];
 
 const cart = [
     {
-        id: 1,
+        cartId: 1,
         name: "Chicken",
         pricePerUnit: 99, // Price per each item
         quantity: 1, // Initial quantity
         totalPrice: 99, // Total price = pricePerUnit * quantity
         imageUrl:
             "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHQt0aBwYwHRqgQgUim4MUdKycRYAqHeUmBg&s",
+        quantity: 1,
+    },
+    {
+        cartId: 2,
+        name: "Chicken",
+        pricePerUnit: 199, // Price per each item
+        quantity: 1, // Initial quantity
+        totalPrice: 199, // Total price = pricePerUnit * quantity
+        imageUrl:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHQt0aBwYwHRqgQgUim4MUdKycRYAqHeUmBg&s",
+        quantity: 1,
     },
 ];
 
@@ -84,23 +98,23 @@ foodItems.forEach((item) => {
 const cartItemsDiv = document.getElementById("cartItems");
 cart.forEach((item) => {
     const cardDiv = document.createElement("div");
-    cardDiv.classList.add("cartItemCard"); 
+    cardDiv.classList.add("cartItemCard");
 
     // Create the inner HTML for the card
     cardDiv.innerHTML = `     
     <div class="itemImage p-2">
-        <img class="object-none w-28 h-full" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHQt0aBwYwHRqgQgUim4MUdKycRYAqHeUmBg&s"
+        <img class="object-none w-28 h-full" src=${item.imageUrl}
             alt="" />
     </div>
     <div class="font-bold pt-3 w-full">
-        <h1 class="text-2xl">Chicken</h1>
-        <h2 class="text-s">99$/each</h2>
+        <h1 class="text-2xl">${item.name}</h1>
+        <h2 class="text-s">${item.pricePerUnit}$/each</h2>
         <div class="quantity-btns">
             <button class="quantity-btn">-</button>
-            <span class="itemQuantity">1</span>
+            <span class="itemQuantity">${item.quantity}</span>
             <button class="quantity-btn">+</button>
         </div>
-        <div class="totalPrice text-end">99$</div>
+        <div class="totalPrice text-end">${item.totalPrice}</div>
     </div>
     `;
 
