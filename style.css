@@ -34,6 +34,9 @@
 .cartItemCard {
     @apply flex outline outline-white rounded-lg text-white mb-2
 }
+/* .cartItems {
+    @apply border p-3 flex justify-between items-center
+} */
 
 .quantity-btn {
     @apply bg-slate-200 text-black px-1 text-center

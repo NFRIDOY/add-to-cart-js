@@ -35,30 +35,13 @@ const foodItems = [
 ];
 
 let cart = [
-    {
-        cartId: 1,
-        name: "Chicken",
-        pricePerUnit: 99, // Price per each item
-        quantity: 1, // Initial quantity
-        totalPrice: 99, // Total price = pricePerUnit * quantity
-        imageUrl:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHQt0aBwYwHRqgQgUim4MUdKycRYAqHeUmBg&s",
-        quantity: 1,
-    },
-    {
-        cartId: 2,
-        name: "Chicken",
-        pricePerUnit: 199, // Price per each item
-        quantity: 1, // Initial quantity
-        totalPrice: 199, // Total price = pricePerUnit * quantity
-        imageUrl:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHQt0aBwYwHRqgQgUim4MUdKycRYAqHeUmBg&s",
-        quantity: 1,
-    },
+
 ];
 
 const cartContainerDiv = document.getElementById("cartContainer");
 cartContainer.style.display = "none";
+const cartItemsDiv = document.getElementById("cartItems");
+const itemCount = document.getElementById("itemCount");
 
 function cartToggle() {
     if (cartContainer.style.display === "none") {
@@ -68,10 +51,46 @@ function cartToggle() {
     }
 }
 
+
+function updateCart() {
+    cartItemsDiv.innerHTML = "";
+    itemCount.innerHTML = cart.length;
+
+    //* Daynamic Cart
+    cart.forEach((item) => {
+        const cardDiv = document.createElement("div");
+        cardDiv.classList.add("cartItemCard");
+
+        // Create the inner HTML for the card
+        cardDiv.innerHTML = `     
+            <div class="itemImage p-2">
+                <img class="object-none w-28 h-full" src=${item.imageUrl}
+                    alt="" />
+            </div>
+            <div class="font-bold pt-3 w-full">
+                <h1 class="text-2xl">${item.name}</h1>
+                <h2 class="text-s">${item.pricePerUnit}$/each</h2>
+                <div class="quantity-btns">
+                    <button class="quantity-btn">-</button>
+                    <span class="itemQuantity">${item.quantity}</span>
+                    <button class="quantity-btn">+</button>
+                </div>
+                <div class="totalPrice text-end">${item.totalPrice}</div>
+            </div>
+            `;
+
+        // Append the card to the itemCards div
+        cartItemsDiv?.appendChild(cardDiv);
+
+    });
+
+    cartItemsDiv.appendChild(cardDiv)
+}
+
 // Add Item to Cart
 function addToCart(item) {
-    alert("Add to cart")
     const existingItem = cart.find(cartItem => cartItem.id === item.id);
+    console.log(existingItem)
     if (!existingItem) {
         cart.push({ ...item });
         updateCart();
@@ -104,40 +123,16 @@ foodItems.forEach((item) => {
         <p class="text-sm">${item.description}</p>
       </div>
       <div class="cta flex flex-col gap-y-2 mt-2">
-        <button class="main-btn w-full" onclick="addToCart(${item.id})">Add to Order</button>
+        <button id="addItem-${item.id}" class="main-btn w-full">Add to Order</button>
         <button class="secondary-btn w-full">Customize</button>
       </div>
     `;
 
     // Append the card to the itemCards div
     itemCardsDiv?.appendChild(cardDiv);
+
+    document.getElementById(`addItem-${item.id}`).addEventListener("click", () => addToCart(item));
 });
 
-//* Daynamic Cart
-const cartItemsDiv = document.getElementById("cartItems");
-cart.forEach((item) => {
-    const cardDiv = document.createElement("div");
-    cardDiv.classList.add("cartItemCard");
 
-    // Create the inner HTML for the card
-    cardDiv.innerHTML = `     
-    <div class="itemImage p-2">
-        <img class="object-none w-28 h-full" src=${item.imageUrl}
-            alt="" />
-    </div>
-    <div class="font-bold pt-3 w-full">
-        <h1 class="text-2xl">${item.name}</h1>
-        <h2 class="text-s">${item.pricePerUnit}$/each</h2>
-        <div class="quantity-btns">
-            <button class="quantity-btn">-</button>
-            <span class="itemQuantity">${item.quantity}</span>
-            <button class="quantity-btn">+</button>
-        </div>
-        <div class="totalPrice text-end">${item.totalPrice}</div>
-    </div>
-    `;
-
-    // Append the card to the itemCards div
-    cartItemsDiv?.appendChild(cardDiv);
-});
 
