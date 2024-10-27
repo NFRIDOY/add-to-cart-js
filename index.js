@@ -61,8 +61,10 @@ function updateCart() {
     //* Daynamic Cart
     cart.forEach((item) => {
         const cardDiv = document.createElement("div");
+        const grandTotalPriceDiv = document.getElementById("grandTotalPrice");
         cardDiv.classList.add("cartItemCard");
         totalPrice = (item.price) * (item.quantity);
+        grandTotal += totalPrice
 
 
         // Create the inner HTML for the card
@@ -84,6 +86,8 @@ function updateCart() {
             `;
         // Append the card to the itemCards div
         cartItemsDiv?.appendChild(cardDiv);
+
+        grandTotalPriceDiv.textContent = grandTotal
         
         
     });
