@@ -55,11 +55,13 @@ function cartToggle() {
 function updateCart() {
     cartItemsDiv.innerHTML = "";
     itemCount.innerHTML = cart.length;
-
+    let totalPrice = 0;
+    
     //* Daynamic Cart
     cart.forEach((item) => {
         const cardDiv = document.createElement("div");
         cardDiv.classList.add("cartItemCard");
+        let totalPrice = (item.price)*(item.quantity);
 
         // Create the inner HTML for the card
         cardDiv.innerHTML = `     
@@ -69,13 +71,13 @@ function updateCart() {
             </div>
             <div class="font-bold pt-3 w-full">
                 <h1 class="text-2xl">${item.name}</h1>
-                <h2 class="text-s">${item.pricePerUnit}$/each</h2>
+                <h2 class="text-s">${item.price}$/each</h2>
                 <div class="quantity-btns">
                     <button class="quantity-btn">-</button>
                     <span class="itemQuantity">${item.quantity}</span>
                     <button class="quantity-btn">+</button>
                 </div>
-                <div class="totalPrice text-end">${item.totalPrice}</div>
+                <div class="totalPrice text-end">${totalPrice}</div>
             </div>
             `;
 
