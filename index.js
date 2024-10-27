@@ -56,12 +56,14 @@ function updateCart() {
     cartItemsDiv.innerHTML = "";
     itemCount.innerHTML = cart.length;
     let totalPrice = 0;
-    
+    let grandTotal = 0;
+
     //* Daynamic Cart
     cart.forEach((item) => {
         const cardDiv = document.createElement("div");
         cardDiv.classList.add("cartItemCard");
-        let totalPrice = (item.price)*(item.quantity);
+        totalPrice = (item.price) * (item.quantity);
+
 
         // Create the inner HTML for the card
         cardDiv.innerHTML = `     
@@ -73,33 +75,63 @@ function updateCart() {
                 <h1 class="text-2xl">${item.name}</h1>
                 <h2 class="text-s">${item.price}$/each</h2>
                 <div class="quantity-btns">
-                    <button class="quantity-btn">-</button>
+                    <button onclick="removeQuantity(${item.id})" class="quantity-btn">-</button>
                     <span class="itemQuantity">${item.quantity}</span>
-                    <button class="quantity-btn">+</button>
+                    <button onclick="addQuantity(${item.id})" class="quantity-btn">+</button>
                 </div>
                 <div class="totalPrice text-end">${totalPrice}</div>
             </div>
             `;
-
         // Append the card to the itemCards div
         cartItemsDiv?.appendChild(cardDiv);
-
+        
+        
     });
-
+    
     cartItemsDiv.appendChild(cardDiv)
+}
+
+//* qunatity Handling
+
+function addQuantity(itemId) {
+    const item = cart?.find(cartItem => cartItem.id === itemId)
+    if (item) {
+        item.quantity = item.quantity + 1;
+        updateCart();
+    }
+}
+function removeQuantity(itemId) {
+    const item = cart?.find(cartItem => cartItem.id === itemId)
+    if (item) {
+        if (item.quantity > 1) {
+            item.quantity = item.quantity - 1;
+            updateCart();
+        }
+        else {
+            removeItem(item.id)
+        }
+    }
+}
+
+function removeItem(itemId) {
+    cart = cart.filter(cartItem => cartItem.id !== itemId)
+    updateCart();
 }
 
 // Add Item to Cart
 function addToCart(item) {
     const existingItem = cart.find(cartItem => cartItem.id === item.id);
+    cartContainer.style.display = "block";
     console.log(existingItem)
     if (!existingItem) {
         cart.push({ ...item });
         updateCart();
         document.getElementById(`addItem-${item.id}`).disabled = true;
     }
-    cartContainer.style.display = "block";
 }
+
+
+
 
 //* Daynamic Cards
 const itemCardsDiv = document.getElementById("itemCards");
