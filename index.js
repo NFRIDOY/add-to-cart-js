@@ -61,17 +61,18 @@ function updateCart() {
         const cardDiv = document.createElement("div");
         const grandTotalPriceDiv = document.getElementById("grandTotalPrice");
         cardDiv.classList.add("cartItemCard");
-        totalPrice = (item.price) * (item.quantity);
+        totalPrice += (item.price) * (item.quantity);
         grandTotal += totalPrice
 
 
         // Create the inner HTML for the card
         cardDiv.innerHTML = `     
             <div class="itemImage p-2">
-                <img class="object-none w-28 h-full" src=${item.imageUrl}
+                <img class="object-cover w-28 h-full" src=${item.imageUrl}
                     alt="" />
             </div>
             <div class="font-bold pt-3 w-full">
+            <button onclick="removeItem(${item.id})" class="deleteItems">❌</button>
                 <h1 class="text-2xl">${item.name}</h1>
                 <h2 class="text-s">${item.price}$/each</h2>
                 <div class="quantity-btns">
@@ -109,14 +110,27 @@ function removeQuantity(itemId) {
             item.quantity = item.quantity - 1;
             updateCart();
         }
+        else if (item.quantity == 0) {
+            removeItem(item.id)
+            updateCart()
+        }
         else {
             removeItem(item.id)
+            updateCart()
         }
     }
 }
 
 function removeItem(itemId) {
     cart = cart.filter(cartItem => cartItem.id !== itemId)
+    if (cart.length < 1) {
+        let grandTotal = 0;
+        const grandTotalPriceDiv = document.getElementById("grandTotalPrice");
+        grandTotalPriceDiv.textContent = grandTotal
+    }
+    // let grandTotal = cart.reduce(function(accumulator, currentValue.quantity) {
+    //     return accumulator + currentValue;
+    //   }, 0); // 36 + 25 + 6 + 15 = 82
     updateCart();
 }
 

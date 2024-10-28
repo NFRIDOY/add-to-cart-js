@@ -32,7 +32,11 @@
 }
 
 .cartItemCard {
-    @apply flex outline outline-white rounded-lg text-white mb-2
+    @apply relative flex outline outline-white rounded-lg text-white mb-2
+}
+
+.deleteItems {
+    @apply absolute -top-3 right-0 bg-white rounded-lg
 }
 /* .cartItems {
     @apply border p-3 flex justify-between items-center
