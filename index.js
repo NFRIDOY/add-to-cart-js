@@ -2,7 +2,7 @@ const foodItems = [
     {
         id: 1,
         name: "Chicken",
-        price: 99,
+        price: 100,
         description:
             "Chicken Fajitas. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, at.",
         imageUrl:
@@ -12,31 +12,29 @@ const foodItems = [
     },
     {
         id: 2,
-        name: "Chicken",
-        price: 199,
+        name: "Berger",
+        price: 200,
         description:
-            "Chicken Fajitas. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, at.",
+            "Chicken Berger Fajitas. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, at.",
         imageUrl:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQIpmd8TQd3iaAIho6YWi_FwWP7ZBbfGeLz3w&s",
+            "https://thumbs.dreamstime.com/b/taste-barger-generative-ai-306636772.jpg",
         isNew: false,
         quantity: 1,
     },
     {
         id: 3,
-        name: "Chicken",
-        price: 99,
+        name: "Pizza",
+        price: 100,
         description:
-            "Chicken Fajitas. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, at.",
+            "Pizza. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolorem, at.",
         imageUrl:
-            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHQt0aBwYwHRqgQgUim4MUdKycRYAqHeUmBg&s",
+            "https://upload.wikimedia.org/wikipedia/commons/thumb/9/91/Pizza-3007395.jpg/250px-Pizza-3007395.jpg",
         isNew: true,
         quantity: 1,
     },
 ];
 
-let cart = [
-
-];
+let cart = [];
 
 const cartContainerDiv = document.getElementById("cartContainer");
 cartContainer.style.display = "none";
@@ -88,10 +86,10 @@ function updateCart() {
         cartItemsDiv?.appendChild(cardDiv);
 
         grandTotalPriceDiv.textContent = grandTotal
-        
-        
+
+
     });
-    
+
     cartItemsDiv.appendChild(cardDiv)
 }
 

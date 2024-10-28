@@ -25,7 +25,7 @@
     @apply bg-white px-4 py-2 rounded-md text-[color:var(--main-color)] outline outline-[color:var(--main-color)] hover:bg-[color:var(--main-color)] hover:text-white cursor-pointer
 }
 .card {
-    @apply relative bg-zinc-100 w-72 p-2 border-2 rounded-xl
+    @apply relative bg-zinc-100 w-72 p-2 border-2 rounded-xl flex flex-col justify-between
 }
 .newBadge {
     @apply absolute -top-5 -left-8 -rotate-45 w-fit px-3 py-1 rounded-full bg-[color:var(--main-color)] text-white font-bold text-sm
